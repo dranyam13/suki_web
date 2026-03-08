@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=5.0, user-scalable=yes">
+    <meta name="description" content="Suki Card - View your loyalty points and rewards">
+    <meta name="theme-color" content="#B8956A">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Suki Card - Login</title>
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='75' font-size='75' fill='%23B8956A'%3E⭐%3C/text%3E%3C/svg%3E">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVJkEZSMUkrQ6usKu8zUkHgJ5+cRDDnoa8aYALcW/Ctf47FDrUfUHV+amDD8tXSoJF2zcLshlhA==" crossorigin="anonymous" referrerpolicy="no-referrer">
+    <link rel="stylesheet" href="suki_login.css?v=20260302">
+    <style>
+        /* Prevent zoom on input focus for mobile */
+        input, select, textarea {
+            font-size: 16px !important;
+        }
+        
+        /* Ensure responsive images */
+        img {
+            max-width: 100%;
+            height: auto;
+            display: block;
+        }
+        
+        /* Touch-friendly spacing */
+        @media (max-width: 767px) {
+            button, a {
+                min-height: 44px;
+                display: inline-flex;
+                align-items: center;
+                justify-content: center;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Login Screen -->
+    <div class="login-container" role="main" aria-label="Login Form">
+        <div class="login-left" role="region" aria-label="Welcome Information">
+            <div class="login-left-content">
+                <div class="logo-icon" aria-hidden="true">
+                    <span style="font-size: 48px; line-height: 1;">⭐</span>
+                </div>
+                <h1>SUKI REWARDS</h1>
+                <p>Earn points with every purchase and redeem exclusive rewards</p>
+            </div>
+        </div>
+        <div class="login-right">
+            <div class="login-box">
+                <h2>Suki Card</h2>
+                <p>Enter your card ID to view points</p>
+                <form id="suki-login-form" aria-label="Suki Card Login Form" novalidate>
+                    <div class="form-group">
+                        <label for="sukiId">Suki Card ID</label>
+                        <div class="input-wrapper">
+                            <input 
+                                type="tel" 
+                                class="form-control" 
+                                id="sukiId" 
+                                name="sukiId"
+                                placeholder="Scan or enter card number" 
+                                autocomplete="off" 
+                                autofocus
+                                required
+                                pattern="[0-9]*"
+                                inputmode="numeric"
+                                aria-required="true"
+                                aria-describedby="sukiId-help login-error">
+                            <i class="fas fa-id-card input-icon" aria-hidden="true"></i>
+                        </div>
+                    </div>
+                    <div id="login-error" class="error-message" role="alert" aria-live="polite">
+                        <i class="fas fa-exclamation-circle" aria-hidden="true"></i>
+                        <span id="error-text"></span>
+                    </div>
+                    <button type="submit" class="btn btn-primary" id="submit-btn" aria-busy="false">
+                        <span class="btn-text">View My Points</span>
+                        <i class="fas fa-spinner fa-spin btn-loader" style="display: none;" aria-hidden="true"></i>
+                    </button>
+                </form>
+                <div class="help-text">
+                    <p><i class="fas fa-barcode" aria-hidden="true"></i> Scan your Suki Card or type the ID manually</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="config.js?v=3"></script>
+    <script src="suki_login.js?v=5"></script>
+</body>
+</html>

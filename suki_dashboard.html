@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=5.0, user-scalable=yes">
+    <meta name="description" content="Suki Card - View your loyalty points and rewards">
+    <meta name="theme-color" content="#B8956A">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>My Suki Points</title>
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='75' font-size='75' fill='%23B8956A'%3E⭐%3C/text%3E%3C/svg%3E">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVJkEZSMUkrQ6usKu8zUkHgJ5+cRDDnoa8aYALcW/Ctf47FDrUfUHV+amDD8tXSoJF2zcLshlhA==" crossorigin="anonymous" referrerpolicy="no-referrer">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+    <link rel="stylesheet" href="dashboard.css?v=8">
+</head>
+<body>
+    <div class="dashboard-wrapper">
+        <!-- Header -->
+        <header class="header" role="banner">
+            <div class="header-content">
+                <div class="brand">
+                    <span class="brand-icon animated-star">⭐</span>
+                    <span class="brand-text">Suki Rewards</span>
+                </div>
+                <a href="suki_login.html" class="logout-link" aria-label="Logout and return to login page">
+                    <i class="fas fa-sign-out-alt" aria-hidden="true"></i>
+                    <span>Logout</span>
+                </a>
+            </div>
+        </header>
+
+        <!-- Main Content -->
+        <main class="main-content" role="main">
+            <div class="container">
+                <!-- Welcome Section -->
+                <section class="welcome-section" aria-label="Welcome Message">
+                    <h1 class="welcome-title">Welcome back, <span id="user-name">Suki Member</span>!</h1>
+                    <p class="welcome-subtitle">Here's your rewards summary</p>
+                </section>
+
+                <!-- Points Card -->
+                <section class="points-card" aria-label="Your Points Summary">
+                    <div class="points-card-header">
+                        <div class="card-badge">
+                            <i class="fas fa-id-card" aria-hidden="true"></i>
+                            <span>Card ID: <strong id="card-id" aria-label="Suki Card ID">---</strong></span>
+                        </div>
+                    </div>
+                    <div class="points-display">
+                        <div class="points-label">Your Total Points</div>
+                        <div class="points-value-wrapper">
+                            <span id="points-value" class="points-value" aria-label="Total Points Balance">---</span>
+                            <span class="points-unit">pts</span>
+                        </div>
+                    </div>
+                    <div class="points-footer">
+                        <div class="stat-item">
+                            <i class="fas fa-coins" aria-hidden="true"></i>
+                            <div class="stat-info">
+                                <span class="stat-value" aria-label="Point Value in Peso">₱<span id="peso-value">0</span></span>
+                                <span class="stat-label">Point Value</span>
+                            </div>
+                        </div>
+                        <div class="stat-divider" aria-hidden="true"></div>
+                        <div class="stat-item">
+                            <i class="fas fa-trophy" aria-hidden="true"></i>
+                            <div class="stat-info">
+                                <span id="tier-status" class="stat-value" aria-label="Member Tier Status">Member</span>
+                                <span class="stat-label">Your Tier</span>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Your Suki Card - Flip Card -->
+                <section class="flip-card-section" aria-label="Your Suki Card">
+                    <h2 class="card-title">
+                        <i class="fas fa-credit-card" aria-hidden="true"></i>
+                        Your Suki Card
+                        <span class="flip-hint"><i class="fas fa-hand-pointer"></i> Click to flip</span>
+                    </h2>
+                    <div class="flip-card" onclick="this.classList.toggle('flipped')" role="button" tabindex="0" aria-label="Click to flip card">
+                        <div class="flip-card-inner">
+                            <!-- Front of Card -->
+                            <div class="flip-card-front">
+                                <div class="card-front-top">
+                                    <div class="card-logo-wrapper">
+                                        <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 200 80'%3E%3Ctext x='10' y='55' font-size='50' font-weight='bold' font-style='italic' fill='%23D4AF37' font-family='Arial'%3E2%3C/text%3E%3Ctext x='55' y='50' font-size='30' font-weight='bold' fill='%23E8E8E8' font-family='Arial' style='text-shadow: 2px 2px 3px rgba(0,0,0,0.3)'%3EMARY'S%3C/text%3E%3C/svg%3E" alt="2 Mary's Logo" class="card-logo-img">
+                                    </div>
+                                    <div class="card-tagline">Ang Tropa Mo<br>Pagdatng Sa Motor</div>
+                                </div>
+                                <div class="card-front-bottom">
+                                    <div class="card-brand">SUKI REWARDS</div>
+                                    <div class="card-member-info">
+                                        <span class="member-name" id="card-member-name">Member Name</span>
+                                        <span class="member-since" id="member-since">Member since 2024</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- Back of Card -->
+                            <div class="flip-card-back">
+                                <div class="card-back-top">
+                                    <div class="card-back-title">SUKI REWARDS</div>
+                                    <div class="card-back-divider"></div>
+                                    <div class="card-terms-title">Terms and Condition</div>
+                                    <p class="card-terms-text">This card is non-transferable. Points earned on qualifying purchases only. The company reserves the right to cancel at any time. Use subject to terms.</p>
+                                </div>
+                                <div class="card-back-bottom">
+                                    <div class="card-qr-section">
+                                        <div class="card-qr" id="card-qr-code">
+                                            <!-- QR code will be generated here -->
+                                        </div>
+                                        <span class="qr-label">Scan to view points</span>
+                                    </div>
+                                    <div class="card-contact">
+                                        <strong>Contact Us:</strong>
+                                        <span>090-742-03477</span>
+                                        <span>2marysmotorcycle@gmail.com</span>
+                                    </div>
+                                    <div class="card-id-display">
+                                        <span class="card-id-label">SUKI CARD ID:</span>
+                                        <span class="card-id-number" id="flip-card-id">123 4567 890</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- How Points Work -->
+                <section class="info-card" aria-label="How Points Work">
+                    <h2 class="card-title">
+                        <i class="fas fa-info-circle" aria-hidden="true"></i>
+                        How Points Work
+                    </h2>
+                    <div class="info-list">
+                        <div class="info-item">
+                            <div class="info-icon earn" aria-hidden="true">
+                                <span class="info-emoji">🛒</span>
+                            </div>
+                            <div class="info-content">
+                                <strong>Earn Points</strong>
+                                <p>Get 1 point for every ₱200 spent on purchases</p>
+                            </div>
+                        </div>
+                        <div class="info-item">
+                            <div class="info-icon redeem" aria-hidden="true">
+                                <span class="info-emoji">🎁</span>
+                            </div>
+                            <div class="info-content">
+                                <strong>Redeem Rewards</strong>
+                                <p>Use points for discounts and exclusive freebies</p>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            </div>
+        </main>
+    </div>
+
+    <!-- Error Modal -->
+    <div id="error-modal" class="modal" role="alertdialog" aria-labelledby="error-modal-title" aria-hidden="true">
+        <div class="modal-overlay" aria-hidden="true"></div>
+        <div class="modal-content">
+            <div class="modal-icon" aria-hidden="true">
+                <i class="fas fa-exclamation-circle"></i>
+            </div>
+            <h3 id="error-modal-title">Oops!</h3>
+            <p id="error-message">Unable to load your points.</p>
+            <a href="suki_login.html" class="btn btn-primary">Try Again</a>
+        </div>
+    </div>
+
+    <script src="config.js?v=3"></script>
+    <script src="suki_dashboard.js?v=9"></script>
+</body>
+</html>
